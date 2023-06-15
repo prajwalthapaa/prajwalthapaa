@@ -1,6 +1,6 @@
 
-package realproject;
-import java.awt.FlowLayout;
+package VIEW;
+//import java.awt.FlowLayout;
 import java.sql.*;
 import java.sql.Statement;
 import javax.swing.*;
@@ -10,10 +10,18 @@ import java.sql.DriverManager;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import java.sql.ResultSet;
+
+import MODEL.*;
+import CONTROLLER.*;
 //import java.
 
-public class loginb extends javax.swing.JFrame {
-    public loginb() {
+public class LoginView extends javax.swing.JFrame {
+    loginmodel model;
+      
+    
+    
+    public LoginView() {
         initComponents();
         ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("finalpic1.jpg")));
         Image img1=  myimage.getImage();
@@ -48,6 +56,7 @@ public class loginb extends javax.swing.JFrame {
         btnnewadm.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         btnnewadm.setText("CLICK HERE");
         btnnewadm.setBorder(null);
+        btnnewadm.setBorderPainted(false);
         btnnewadm.setContentAreaFilled(false);
         btnnewadm.setFocusCycleRoot(true);
         btnnewadm.setFocusPainted(false);
@@ -114,6 +123,8 @@ public class loginb extends javax.swing.JFrame {
         btnlogin.setForeground(new java.awt.Color(255, 255, 255));
         btnlogin.setText("LOGIN");
         btnlogin.setBorder(null);
+        btnlogin.setBorderPainted(false);
+        btnlogin.setContentAreaFilled(false);
         btnlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnloginActionPerformed(evt);
@@ -121,7 +132,7 @@ public class loginb extends javax.swing.JFrame {
         });
         getContentPane().add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 440, 110, 13));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/realproject/LOGIN.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/LOGIN.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 550));
 
         jLabel5.setText("jLabel5");
@@ -139,7 +150,21 @@ public class loginb extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtpasswordActionPerformed
 
+    public loginmodel getMymodel()
+    {
+        model=new loginmodel(txtusername.getText(),txtpassword.getText());
+        
+        return model;
+    }
+    
+    public void showMessageBox(String msg)
+    {
+        JOptionPane.showMessageDialog(this,msg);
+    }
+    
+    
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+logincontroller l=new logincontroller(this);
 
    try {
        Class.forName("com.mysql.cj.jdbc.Driver");
@@ -150,7 +175,7 @@ public class loginb extends javax.swing.JFrame {
        String sql="select * from e_info where emp_phone='"+username+"' and emp_password='"+password+"'";
        ResultSet resultSet = stmt.executeQuery(sql);
        if(resultSet.next()&&txtprivacy_policy.isSelected()&&txtterms_conditions.isSelected()){             
-            Main s=new Main();
+            DashBoard s=new DashBoard();
             s.setVisible(true);
             this.hide();
         }
@@ -185,20 +210,21 @@ public class loginb extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loginb.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loginb.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loginb.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loginb.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new loginb().setVisible(true);
+                new LoginView().setVisible(true);
             }
         });
     }

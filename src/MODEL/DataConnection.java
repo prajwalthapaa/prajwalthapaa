@@ -1,9 +1,9 @@
- package realproject;
+ package MODEL;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class crtacc_conn {
+public class DataConnection {
     public static Connection dbconnect()
     { 
         try

@@ -1,6 +1,7 @@
 
-package realproject;
+package VIEW;
 
+import MODEL.DataConnection;
 import java.sql.Connection;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
@@ -156,6 +157,7 @@ public class newadmin extends javax.swing.JFrame {
         btnregister.setText("REGISTER");
         btnregister.setBorder(null);
         btnregister.setBorderPainted(false);
+        btnregister.setContentAreaFilled(false);
         btnregister.setDoubleBuffered(true);
         btnregister.setFocusTraversalPolicyProvider(true);
         btnregister.setFocusable(false);
@@ -171,6 +173,8 @@ public class newadmin extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jButton1.setText("GO BACK TO LOGIN");
         jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -184,7 +188,7 @@ public class newadmin extends javax.swing.JFrame {
         jTextField2.setText("MONEYPLEX");
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 470, 90, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/realproject/FINALREGIST.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/FINALREGIST.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 890, 500));
 
         pack();
@@ -196,7 +200,7 @@ public class newadmin extends javax.swing.JFrame {
     }//GEN-LAST:event_txtephoneActionPerformed
 
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisterActionPerformed
-       Connection conn= crtacc_conn.dbconnect();
+       Connection conn= DataConnection.dbconnect();
    try
    {
        Statement stmt =conn.createStatement();
@@ -314,7 +318,7 @@ if(txtepassword.getText().length()==0){
         }    }//GEN-LAST:event_txtepasswordFocusLost
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-    loginb s=new loginb();
+    LoginView s=new LoginView();
             s.setVisible(true);
             this.hide();    }//GEN-LAST:event_jButton1ActionPerformed
 

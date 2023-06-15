@@ -1,6 +1,6 @@
 
-package realproject;
-public class Realproject {
+package VIEW;
+public class Moneyplex {
     public static void main(String[] args) {
       
     }
