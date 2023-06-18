@@ -154,6 +154,8 @@ public class LoginView extends javax.swing.JFrame {
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
        if(txtprivacy_policy.isSelected()&&txtterms_conditions.isSelected()){   
            logincontroller l=new logincontroller(this);
+//           l.setVisible(true
+
         }
         else{
           System.out.println("wrong");
