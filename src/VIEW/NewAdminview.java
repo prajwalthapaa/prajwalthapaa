@@ -1,19 +1,32 @@
 
 package VIEW;
-
 import MODEL.DataConnection;
-import java.sql.Connection;
-import java.sql.Statement;
+//import java.sql.Connection;
+//import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
+import MODEL.*;
+import CONTROLLER.*;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+//ResultSet rs;
+//PreparedStatement pst=null;
 
-public class newadmin extends javax.swing.JFrame {
-
-    public newadmin() {
+public class NewAdminview extends javax.swing.JFrame {
+    NewAdminmodel model1;
+    public NewAdminview() {
         initComponents();
-        addPlaceholderstyle(txteid);
+        ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("back ground.jpg")));
+        Image img1=  myimage.getImage();
+        Image img2=img1.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH);
+        ImageIcon i = new ImageIcon(img2);
+        jLabel1.setIcon(i);
+//        addPlaceholderstyle(txteid);
         addPlaceholderstyle(txtefname);
         addPlaceholderstyle(txtelname);
         addPlaceholderstyle(txtephone);
@@ -21,11 +34,26 @@ public class newadmin extends javax.swing.JFrame {
         addPlaceholderstyle(txtepassword);
         
     }
+//    private void idautoincrement(){
+//    try{
+//        Connection conn= DataConnection.dbconnect();
+//        String sqlquery="select idno from e_info order by empid desc limit l";
+//        pst=conn.prepareStatement(sqlquery);
+//        rs= pst.executeQuery();
+//        if(rs.next()){
+//            int id = rs.getInt(l);
+//            int n = id+l;
+//            txtid.setText(Integer.toString(n))
+//        }
+//    }
+//    catch(Exception e){
+//    }
+//    }
     public void addPlaceholderstyle (JTextField textField) { 
      Font font =textField.getFont();
      font =font.deriveFont (Font.ITALIC); 
      textField.setFont (font);
-     textField.setForeground (Color.gray);
+     textField.setForeground (Color.black);
         }//font color
     public void removePlaceholderStyle (JTextField textField) {
     Font font= textField.getFont();
@@ -37,40 +65,22 @@ public class newadmin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txteid = new javax.swing.JTextField();
         txtefname = new javax.swing.JTextField();
         txtelname = new javax.swing.JTextField();
         txtephone = new javax.swing.JTextField();
         txteemail = new javax.swing.JTextField();
         txtepassword = new javax.swing.JTextField();
+        txtid = new javax.swing.JTextField();
         btnregister = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NEW ADMIN REGISTER");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txteid.setBackground(new java.awt.Color(223, 224, 229));
-        txteid.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txteid.setText("UNIQUE ID");
-        txteid.setBorder(null);
-        txteid.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txteidFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txteidFocusLost(evt);
-            }
-        });
-        txteid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txteidActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txteid, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 112, 90, 30));
 
         txtefname.setBackground(new java.awt.Color(223, 224, 229));
         txtefname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -89,7 +99,7 @@ public class newadmin extends javax.swing.JFrame {
                 txtefnameActionPerformed(evt);
             }
         });
-        getContentPane().add(txtefname, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 120, 30));
+        getContentPane().add(txtefname, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 170, 120, 30));
 
         txtelname.setBackground(new java.awt.Color(223, 224, 229));
         txtelname.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -103,7 +113,7 @@ public class newadmin extends javax.swing.JFrame {
                 txtelnameFocusLost(evt);
             }
         });
-        getContentPane().add(txtelname, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, 140, 30));
+        getContentPane().add(txtelname, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 170, 120, 30));
 
         txtephone.setBackground(new java.awt.Color(223, 224, 229));
         txtephone.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -122,7 +132,7 @@ public class newadmin extends javax.swing.JFrame {
                 txtephoneActionPerformed(evt);
             }
         });
-        getContentPane().add(txtephone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 222, 240, 30));
+        getContentPane().add(txtephone, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 222, 250, 30));
 
         txteemail.setBackground(new java.awt.Color(223, 224, 229));
         txteemail.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -150,13 +160,20 @@ public class newadmin extends javax.swing.JFrame {
                 txtepasswordFocusLost(evt);
             }
         });
-        getContentPane().add(txtepassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 260, 30));
+        getContentPane().add(txtepassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 250, 30));
+
+        txtid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
 
         btnregister.setBackground(new java.awt.Color(223, 224, 229));
         btnregister.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        btnregister.setForeground(new java.awt.Color(255, 255, 255));
         btnregister.setText("REGISTER");
-        btnregister.setBorder(null);
-        btnregister.setBorderPainted(false);
+        btnregister.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnregister.setContentAreaFilled(false);
         btnregister.setDoubleBuffered(true);
         btnregister.setFocusTraversalPolicyProvider(true);
@@ -167,29 +184,33 @@ public class newadmin extends javax.swing.JFrame {
                 btnregisterActionPerformed(evt);
             }
         });
-        getContentPane().add(btnregister, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 90, 30));
+        getContentPane().add(btnregister, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 390, 90, 30));
 
         jButton1.setBackground(new java.awt.Color(223, 224, 229));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("GO BACK TO LOGIN");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 3, true));
         jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 437, 160, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 440, 160, 30));
 
-        jTextField2.setBackground(new java.awt.Color(0, 51, 102));
-        jTextField2.setForeground(new java.awt.Color(0, 255, 255));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("MONEYPLEX");
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 470, 90, 30));
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("REGISTRATION");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, 265, 50));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/VIEW/FINALREGIST.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-4, 0, 890, 500));
+        jLabel3.setBackground(new java.awt.Color(12, 103, 130));
+        jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jLabel3.setOpaque(true);
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 360, 480));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, 900, 510));
 
         pack();
         setLocationRelativeTo(null);
@@ -199,36 +220,38 @@ public class newadmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtephoneActionPerformed
 
+    public NewAdminmodel getMymodel()
+    {
+        model1=new NewAdminmodel(Integer.parseInt(txtephone.getText()),txtefname.getText(),txtelname.getText(),txteemail.getText(),txtepassword.getText());
+        return model1;
+    }
+     public void showMessage(String msg)
+    {
+        JOptionPane.showMessageDialog(this,msg);
+    }
+    public void addLoginListner(ActionListener log)
+{
+    btnregister.addActionListener(log);
+}
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisterActionPerformed
-       Connection conn= DataConnection.dbconnect();
-   try
-   {
-       Statement stmt =conn.createStatement();
-       String sql ="insert into e_info values('"+txteid.getText()+"','"+txtefname.getText()+"','"+txtelname.getText()+"','"+txtephone.getText()+"','"+txteemail.getText()+"','"+txtepassword.getText()+"')";
-       stmt.executeUpdate(sql);
-       System.out.println("data inserted");
-       JOptionPane.showMessageDialog(this,"SUCCESSFULLY REGISTERED", "EMPLOYEE", JOptionPane.INFORMATION_MESSAGE);
-        
-    }                                           
-    catch(Exception e)
-         {
-             System.out.println(e.getMessage());
-             
-         }
+//       Connection conn= DataConnection.dbconnect();
+//   try
+//   {
+//       Statement stmt =conn.createStatement();
+//       String sql ="insert into e_info values('"+txteid.getText()+"','"+txtefname.getText()+"','"+txtelname.getText()+"','"+txtephone.getText()+"','"+txteemail.getText()+"','"+txtepassword.getText()+"')";
+//       stmt.executeUpdate(sql);
+//       System.out.println("data inserted");
+//       JOptionPane.showMessageDialog(this,"SUCCESSFULLY REGISTERED", "EMPLOYEE", JOptionPane.INFORMATION_MESSAGE);
+//       
+//    }                                           
+//    catch(Exception e)
+//         {
+//             System.out.println(e.getMessage());
+//             
+//         }
+    NewAdmincontroller na= new NewAdmincontroller(this);
+
     }//GEN-LAST:event_btnregisterActionPerformed
-
-    private void txteidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txteidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txteidActionPerformed
-
-    private void txteidFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txteidFocusGained
-       if(txteid.getText().equals("UNIQUE ID")){
-           txteid.setText(null);
-           txteid.requestFocus();
-           //remove placeholder style
-           removePlaceholderStyle(txteid);
-       }
-    }//GEN-LAST:event_txteidFocusGained
 
     private void txtefnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtefnameFocusGained
         if(txtefname.getText().equals("FIRST NAME")){
@@ -275,15 +298,8 @@ public class newadmin extends javax.swing.JFrame {
        }        // TODO add your handling code here:
     }//GEN-LAST:event_txtepasswordFocusGained
 
-    private void txteidFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txteidFocusLost
-    if(txteid.getText().length()==0){
-        addPlaceholderstyle(txteid);
-        txteid.setText("UNIQUE ID");    
-       }
-    }//GEN-LAST:event_txteidFocusLost
-
     private void txtefnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtefnameActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtefnameActionPerformed
 
     private void txtefnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtefnameFocusLost
@@ -322,10 +338,14 @@ if(txtepassword.getText().length()==0){
             s.setVisible(true);
             this.hide();    }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new newadmin().setVisible(true);
+                new NewAdminview().setVisible(true);
             }
         });
     }
@@ -334,12 +354,13 @@ if(txtepassword.getText().length()==0){
     private javax.swing.JButton btnregister;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField txteemail;
     private javax.swing.JTextField txtefname;
-    private javax.swing.JTextField txteid;
     private javax.swing.JTextField txtelname;
     private javax.swing.JTextField txtepassword;
     private javax.swing.JTextField txtephone;
+    private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables
 }

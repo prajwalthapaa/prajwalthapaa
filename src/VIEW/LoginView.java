@@ -1,26 +1,19 @@
 
 package VIEW;
-//import java.awt.FlowLayout;
-import java.sql.*;
-import java.sql.Statement;
-import javax.swing.*;
+//import java.sql.*;
+//import java.sql.Statement;
+//import javax.swing.*;
 import javax.swing.JOptionPane;
-import java.sql.Connection;
-import java.sql.DriverManager;
+//import java.sql.Connection;
+//import java.sql.DriverManager;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-import java.sql.ResultSet;
-
+//import java.sql.ResultSet;
 import MODEL.*;
 import CONTROLLER.*;
-//import java.
-
 public class LoginView extends javax.swing.JFrame {
     loginmodel model;
-      
-    
-    
     public LoginView() {
         initComponents();
         ImageIcon myimage = new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("finalpic1.jpg")));
@@ -29,7 +22,6 @@ public class LoginView extends javax.swing.JFrame {
         ImageIcon i = new ImageIcon(img2);
         jLabel1.setIcon(i);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -153,42 +145,20 @@ public class LoginView extends javax.swing.JFrame {
     public loginmodel getMymodel()
     {
         model=new loginmodel(txtusername.getText(),txtpassword.getText());
-        
         return model;
     }
-    
     public void showMessageBox(String msg)
     {
         JOptionPane.showMessageDialog(this,msg);
     }
-    
-    
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
-logincontroller l=new logincontroller(this);
-
-   try {
-       Class.forName("com.mysql.cj.jdbc.Driver");
-       Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/crt_account", "root", "khadgi986");
-       String username = txtusername.getText();
-       String password = txtpassword.getText();
-       Statement stmt =connection.createStatement();
-       String sql="select * from e_info where emp_phone='"+username+"' and emp_password='"+password+"'";
-       ResultSet resultSet = stmt.executeQuery(sql);
-       if(resultSet.next()&&txtprivacy_policy.isSelected()&&txtterms_conditions.isSelected()){             
-            DashBoard s=new DashBoard();
-            s.setVisible(true);
-            this.hide();
+       if(txtprivacy_policy.isSelected()&&txtterms_conditions.isSelected()){   
+           logincontroller l=new logincontroller(this);
         }
         else{
           System.out.println("wrong");
           JOptionPane.showMessageDialog(this,"WRONG USERNAME OR PASSWORD AND AGREE CONDITIONS", "ERROR", JOptionPane.INFORMATION_MESSAGE);
-        }     
-              connection.close();
-    } catch (Exception e) {
-       System.out.println(e.getMessage());
-        }
-        
-        
+        }             
     }//GEN-LAST:event_btnloginActionPerformed
 
     private void txtprivacy_policyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtprivacy_policyActionPerformed
@@ -196,7 +166,7 @@ logincontroller l=new logincontroller(this);
     }//GEN-LAST:event_txtprivacy_policyActionPerformed
 
     private void btnnewadmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnewadmActionPerformed
-        newadmin s=new newadmin();
+        NewAdminview s=new NewAdminview();
             s.setVisible(true);
             this.hide();
     }//GEN-LAST:event_btnnewadmActionPerformed

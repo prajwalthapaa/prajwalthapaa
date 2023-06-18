@@ -26,14 +26,14 @@ class LoginList
         mymodel=myview.getMymodel();
         if(checkMyData(mymodel))
         {
-           myview.showMessageBox("Login Successfully");
+            DashBoard s=new DashBoard();
+            s.setVisible(true);
         }
         else
         {
-            myview.showMessageBox("Login Failed");
         }
         }
-        catch(Exception e1)
+        catch(Exception e1)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
         {
             
         }
@@ -47,30 +47,22 @@ public boolean checkMyData(loginmodel mymodel) throws Exception
        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/crt_account", "root", "khadgi986");
            String sql="select * from e_info where emp_phone='"+mymodel.getUsername()+"' and emp_password='"+mymodel.getPassword()+"'";
            try
-           {
-              
+           { 
               stmt=connection.createStatement();
               rs=stmt.executeQuery(sql);
               if(rs.next())
               {
-                  return true;
+               return true;
               }
+              
            }
            catch(Exception e)
-           {
-               
-           }
-       
+           {   
+           } 
        }
        catch(Exception e)
-       {
-           
+       {          
        }
-    
-    
     return false;
-}
-
-
-    
+}   
 }
