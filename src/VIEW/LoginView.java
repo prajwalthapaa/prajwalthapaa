@@ -1,15 +1,9 @@
 
 package VIEW;
-//import java.sql.*;
-//import java.sql.Statement;
-//import javax.swing.*;
 import javax.swing.JOptionPane;
-//import java.sql.Connection;
-//import java.sql.DriverManager;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
-//import java.sql.ResultSet;
 import MODEL.*;
 import CONTROLLER.*;
 public class LoginView extends javax.swing.JFrame {
@@ -154,8 +148,6 @@ public class LoginView extends javax.swing.JFrame {
     private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
        if(txtprivacy_policy.isSelected()&&txtterms_conditions.isSelected()){   
            logincontroller l=new logincontroller(this);
-//           l.setVisible(true
-
         }
         else{
           System.out.println("wrong");
@@ -190,10 +182,6 @@ public class LoginView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginView().setVisible(true);

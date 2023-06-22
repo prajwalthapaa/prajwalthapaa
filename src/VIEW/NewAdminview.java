@@ -1,8 +1,5 @@
 
 package VIEW;
-import MODEL.DataConnection;
-//import java.sql.Connection;
-//import java.sql.Statement;
 import javax.swing.JOptionPane;
 import java.awt.Color;
 import java.awt.Font;
@@ -13,10 +10,6 @@ import javax.swing.JTextField;
 import MODEL.*;
 import CONTROLLER.*;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-//ResultSet rs;
-//PreparedStatement pst=null;
-
 public class NewAdminview extends javax.swing.JFrame {
     NewAdminmodel model1;
     public NewAdminview() {
@@ -26,29 +19,12 @@ public class NewAdminview extends javax.swing.JFrame {
         Image img2=img1.getScaledInstance(jLabel1.getWidth(),jLabel1.getHeight(),Image.SCALE_SMOOTH);
         ImageIcon i = new ImageIcon(img2);
         jLabel1.setIcon(i);
-//        addPlaceholderstyle(txteid);
         addPlaceholderstyle(txtefname);
         addPlaceholderstyle(txtelname);
         addPlaceholderstyle(txtephone);
         addPlaceholderstyle(txteemail);
-        addPlaceholderstyle(txtepassword);
-        
+        addPlaceholderstyle(txtepassword); 
     }
-//    private void idautoincrement(){
-//    try{
-//        Connection conn= DataConnection.dbconnect();
-//        String sqlquery="select idno from e_info order by empid desc limit l";
-//        pst=conn.prepareStatement(sqlquery);
-//        rs= pst.executeQuery();
-//        if(rs.next()){
-//            int id = rs.getInt(l);
-//            int n = id+l;
-//            txtid.setText(Integer.toString(n))
-//        }
-//    }
-//    catch(Exception e){
-//    }
-//    }
     public void addPlaceholderstyle (JTextField textField) { 
      Font font =textField.getFont();
      font =font.deriveFont (Font.ITALIC); 
@@ -70,7 +46,6 @@ public class NewAdminview extends javax.swing.JFrame {
         txtephone = new javax.swing.JTextField();
         txteemail = new javax.swing.JTextField();
         txtepassword = new javax.swing.JTextField();
-        txtid = new javax.swing.JTextField();
         btnregister = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -162,23 +137,12 @@ public class NewAdminview extends javax.swing.JFrame {
         });
         getContentPane().add(txtepassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 250, 30));
 
-        txtid.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtidActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 130, -1, -1));
-
         btnregister.setBackground(new java.awt.Color(223, 224, 229));
         btnregister.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         btnregister.setForeground(new java.awt.Color(255, 255, 255));
         btnregister.setText("REGISTER");
         btnregister.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnregister.setContentAreaFilled(false);
-        btnregister.setDoubleBuffered(true);
-        btnregister.setFocusTraversalPolicyProvider(true);
-        btnregister.setFocusable(false);
-        btnregister.setHideActionText(true);
         btnregister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnregisterActionPerformed(evt);
@@ -234,23 +198,7 @@ public class NewAdminview extends javax.swing.JFrame {
     btnregister.addActionListener(log);
 }
     private void btnregisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregisterActionPerformed
-//       Connection conn= DataConnection.dbconnect();
-//   try
-//   {
-//       Statement stmt =conn.createStatement();
-//       String sql ="insert into e_info values('"+txteid.getText()+"','"+txtefname.getText()+"','"+txtelname.getText()+"','"+txtephone.getText()+"','"+txteemail.getText()+"','"+txtepassword.getText()+"')";
-//       stmt.executeUpdate(sql);
-//       System.out.println("data inserted");
-//       JOptionPane.showMessageDialog(this,"SUCCESSFULLY REGISTERED", "EMPLOYEE", JOptionPane.INFORMATION_MESSAGE);
-//       
-//    }                                           
-//    catch(Exception e)
-//         {
-//             System.out.println(e.getMessage());
-//             
-//         }
     NewAdmincontroller na= new NewAdmincontroller(this);
-
     }//GEN-LAST:event_btnregisterActionPerformed
 
     private void txtefnameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtefnameFocusGained
@@ -301,6 +249,13 @@ public class NewAdminview extends javax.swing.JFrame {
     private void txtefnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtefnameActionPerformed
 
     }//GEN-LAST:event_txtefnameActionPerformed
+    public void resetme(){
+    txtefname.setText("");
+    txtepassword.setText(" ");
+    txteemail.setText(" ");
+    txtelname.setText(" ");
+    txtephone.setText(" ");
+    }
 
     private void txtefnameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtefnameFocusLost
     if(txtefname.getText().length()==0){
@@ -338,10 +293,6 @@ if(txtepassword.getText().length()==0){
             s.setVisible(true);
             this.hide();    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtidActionPerformed
-
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -361,6 +312,5 @@ if(txtepassword.getText().length()==0){
     private javax.swing.JTextField txtelname;
     private javax.swing.JTextField txtepassword;
     private javax.swing.JTextField txtephone;
-    private javax.swing.JTextField txtid;
     // End of variables declaration//GEN-END:variables
 }
